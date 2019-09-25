@@ -1,0 +1,14 @@
+D:\SourceCode\Backend\NetCoreBackend\StaffAPI\bin\Debug\netcoreapp2.2\StaffAPI.deps.json
+D:\SourceCode\Backend\NetCoreBackend\StaffAPI\bin\Debug\netcoreapp2.2\StaffAPI.runtimeconfig.json
+D:\SourceCode\Backend\NetCoreBackend\StaffAPI\bin\Debug\netcoreapp2.2\StaffAPI.runtimeconfig.dev.json
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\bin\Debug\netcoreapp2.2\StaffAPI.dll
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\bin\Debug\netcoreapp2.2\StaffAPI.pdb
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.csprojAssemblyReference.cache
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.csproj.CoreCompileInputs.cache
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.RazorAssemblyInfo.cache
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.RazorAssemblyInfo.cs
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.AssemblyInfoInputs.cache
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.AssemblyInfo.cs
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.RazorTargetAssemblyInfo.cache
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.dll
+d:\SourceCode\Backend\NetCoreBackend\StaffAPI\obj\Debug\netcoreapp2.2\StaffAPI.pdb
