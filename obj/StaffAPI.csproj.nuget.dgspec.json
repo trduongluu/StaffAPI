@@ -1,33 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceCode\\Backend\\NetCoreBackend\\StaffAPI\\StaffAPI.csproj": {}
+    "C:\\Users\\duong\\Documents\\GitHub\\StaffAPI\\StaffAPI.csproj": {}
   },
   "projects": {
-    "D:\\SourceCode\\Backend\\NetCoreBackend\\StaffAPI\\StaffAPI.csproj": {
+    "C:\\Users\\duong\\Documents\\GitHub\\StaffAPI\\StaffAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\Backend\\NetCoreBackend\\StaffAPI\\StaffAPI.csproj",
+        "projectUniqueName": "C:\\Users\\duong\\Documents\\GitHub\\StaffAPI\\StaffAPI.csproj",
         "projectName": "StaffAPI",
-        "projectPath": "D:\\SourceCode\\Backend\\NetCoreBackend\\StaffAPI\\StaffAPI.csproj",
-        "packagesPath": "C:\\Users\\Duong\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\Backend\\NetCoreBackend\\StaffAPI\\obj\\",
+        "projectPath": "C:\\Users\\duong\\Documents\\GitHub\\StaffAPI\\StaffAPI.csproj",
+        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\duong\\Documents\\GitHub\\StaffAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Aptech\\Sem3\\wasd2code\\Newtonsoft.Json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.2": {
@@ -67,13 +65,23 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc2, )"
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

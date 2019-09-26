@@ -16,7 +16,7 @@ namespace StaffAPI.Migrations
                     StaffId = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false),
+                    Phone = table.Column<int>(nullable: true),
                     Address = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
