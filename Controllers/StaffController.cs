@@ -38,6 +38,16 @@ namespace StaffAPI.Controllers
             }
             return Ok(staff);
         }
+
+        // [HttpGet]
+        // public ActionResult<IEnumerable<Staff>> Get(string keySearch = "") {
+        //     var query = staffContext.Staffs.AsQueryable();     
+        //     if (!string.IsNullOrEmpty(keySearch))
+        //     {
+        //         query = query.Where(x=> x.Email == keySearch || x.Name == keySearch);             
+        //     }
+        //     return query.ToList();
+        // }
         
         [HttpPost]
         public async Task<ActionResult> Post([FromBody]Staff staff) {

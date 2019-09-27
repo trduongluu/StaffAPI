@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace StaffAPI.Models
 {
     public class Staff
     {
+        [JsonIgnore]
         public int Id { get; set; }
         [Required]
         public string StaffId { get; set; }
