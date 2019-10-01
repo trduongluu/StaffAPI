@@ -6,24 +6,36 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using StaffAPI.Models;
 
-namespace StaffAPI.Controllers {
-    [Route ("api/[controller]")]
+namespace StaffAPI.Controllers
+{
+    [Route("api/[controller]")]
     [ApiController]
 
-    public class StaffController : Controller {
+    public class StaffController : Controller
+    {
         private StaffContext staffContext;
 
-        public StaffController (StaffContext context) {
+        public StaffController(StaffContext context)
+        {
             staffContext = context;
         }
 
         [HttpGet]
-        public async Task<JObject> GetAsync (int index, int size) {
+        [Route("test")]
+        public ActionResult<IEnumerable<Staff>> TestGet()
+        {
+            return staffContext.Staffs.ToList();
+        }
+
+        [HttpGet]
+        public async Task<JObject> GetAsync(int index, int size)
+        {
             var query = staffContext.Staffs.AsQueryable();
-            
+
             var total = await staffContext.Staffs.LongCountAsync();
             var data = await query.Skip((index - 1) * size).Take(size).ToListAsync();
             // return staffContext.Staffs.ToList();
+
             return new JObject {
                 new JProperty("total", total),
                 new JProperty("data", JArray.FromObject(data)),
@@ -31,27 +43,34 @@ namespace StaffAPI.Controllers {
         }
 
         [HttpGet]
-        [Route ("getbyid/{id}")]
-        public ActionResult<Staff> GetById (int id) {
-            if (id <= 0) {
-                return NotFound ("Staff id must be higher than zero");
+        [Route("getbyid/{id}")]
+        public ActionResult<Staff> GetById(int id)
+        {
+            if (id <= 0)
+            {
+                return NotFound("Staff id must be higher than zero");
             }
-            Staff staff = staffContext.Staffs.FirstOrDefault (s => s.Id == id);
+            Staff staff = staffContext.Staffs.FirstOrDefault(s => s.Id == id);
 
-            if (staff == null) {
-                return NotFound ("Staff not found");
+            if (staff == null)
+            {
+                return NotFound("Staff not found");
             }
-            return Ok (staff);
+            return Ok(staff);
         }
 
-        // TODO: search api
         [HttpGet]
         [Route("search")]
-        public async Task<JObject> SearchAsync(int index, int size, string searchString = "") {
-            var query = staffContext.Staffs.AsQueryable();     
+        public async Task<JObject> SearchAsync(int index, int size, string searchString = "")
+        {
+            var query = staffContext.Staffs.AsQueryable();
             if (!string.IsNullOrEmpty(searchString))
             {
-                query = query.Where(x=> x.Email.Contains(searchString) || x.Name.Contains(searchString));             
+                query = query.Where(x =>
+                    x.Email.Contains(searchString) ||
+                    x.Name.Contains(searchString) ||
+                    x.Address.Contains(searchString)
+                );
             }
             var total = await staffContext.Staffs.LongCountAsync();
             var data = await query.Skip((index - 1) * size).Take(size).ToListAsync();
@@ -63,56 +82,68 @@ namespace StaffAPI.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post ([FromBody] Staff staff) {
-            if (staff == null) {
-                return NotFound ("Staff data is not supplied");
+        public async Task<ActionResult> Post([FromBody] Staff staff)
+        {
+            if (staff == null)
+            {
+                return NotFound("Staff data is not supplied");
             }
-            if (!ModelState.IsValid) {
-                return BadRequest (ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
-            await staffContext.Staffs.AddAsync (staff);
-            await staffContext.SaveChangesAsync ();
-            return Ok (staff);
+            await staffContext.Staffs.AddAsync(staff);
+            await staffContext.SaveChangesAsync();
+            return Ok(staff);
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update ([FromBody] Staff staff) {
-            if (staff == null) {
-                return NotFound ("Staff data is not supplied");
+        public async Task<ActionResult> Update([FromBody] Staff staff)
+        {
+            if (staff == null)
+            {
+                return NotFound("Staff data is not supplied");
             }
-            if (!ModelState.IsValid) {
-                return BadRequest (ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
-            Staff existStaff = staffContext.Staffs.FirstOrDefault (s => s.StaffId == staff.StaffId);
-            if (existStaff == null) {
-                return NotFound ("Staff does not exist in the database");
+            Staff existStaff = staffContext.Staffs.FirstOrDefault(s => s.StaffId == staff.StaffId);
+            if (existStaff == null)
+            {
+                return NotFound("Staff does not exist in the database");
             }
             existStaff.StaffId = staff.StaffId;
             existStaff.Name = staff.Name;
             existStaff.Email = staff.Email;
             existStaff.Phone = staff.Phone;
             existStaff.Address = staff.Address;
-            staffContext.Attach (existStaff).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            await staffContext.SaveChangesAsync ();
-            return Ok (existStaff);
+            staffContext.Attach(existStaff).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            await staffContext.SaveChangesAsync();
+            return Ok(existStaff);
         }
 
         [HttpDelete]
-        public async Task<JObject> Delete (string sId) {
-            if (sId == null) {
-                return new JObject { new JProperty ("No data supplied", false) };
+        [Route("delete")]
+        public async Task<JObject> Delete(string sId)
+        {
+            if (sId == null)
+            {
+                return new JObject { new JProperty("No data supplied", false) };
             }
-            Staff staff = staffContext.Staffs.FirstOrDefault (s => s.StaffId == sId);
-            if (staff == null) {
-                return new JObject { new JProperty ("No staff found in database", false) };
+            Staff staff = staffContext.Staffs.FirstOrDefault(s => s.StaffId == sId);
+            if (staff == null)
+            {
+                return new JObject { new JProperty("No staff found in database", false) };
             }
-            staffContext.Staffs.Remove (staff);
-            await staffContext.SaveChangesAsync ();
-            return new JObject { new JProperty ("success", true) };
+            staffContext.Staffs.Remove(staff);
+            await staffContext.SaveChangesAsync();
+            return new JObject { new JProperty("success", true) };
         }
 
-        ~StaffController () {
-            staffContext.Dispose ();
+        ~StaffController()
+        {
+            staffContext.Dispose();
         }
     }
 }
